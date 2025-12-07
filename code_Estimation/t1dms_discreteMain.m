@@ -213,10 +213,14 @@ end
 
 for i=1:5
     figure
-    plot(data_ssogmm.ts,ssogmm(i,:),'LineWidth',1.4)
+    plot(data_ssogmm.ts,ssogmm(i,:),'LineWidth',2)
     hold on
     % plot(data_ssogmm.ts,xob(i,:),'.')
-    plot(data_ssogmm.ts,xhat(i,:),'.')
+    plot(data_ssogmm.ts,xob(i,:),'.','MarkerSize',10)
+    h_axes = gca;
+h_axes.XAxis.FontSize = 18;
+h_axes.YAxis.FontSize = 18;
+
 end
 
 
@@ -233,10 +237,10 @@ for i = 1:5
     figure(i)
     if i == 1
         hold on
-        plot(G,'LineWidth',2)
-        legend('SSOGMM','EKF','UVA/Padova')
+        plot(G,'LineWidth',3)
+        legend({'SSOGMM','Observer','UVA/Padova'},'FontSize',15,'FontWeight','bold')
     else
-        legend('SSOGMM','EKF')
+        legend({'SSOGMM','Observer'},'FontSize',15,'FontWeight','bold')
     end
     grid on
     xlim([0 3400])
