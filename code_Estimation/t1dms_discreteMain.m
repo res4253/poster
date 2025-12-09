@@ -213,13 +213,25 @@ end
 
 for i=1:5
     figure
-    plot(data_ssogmm.ts,ssogmm(i,:),'LineWidth',2)
+    plot(data_ssogmm.ts,ssogmm(i,:),'LineWidth',4)
     hold on
     % plot(data_ssogmm.ts,xob(i,:),'.')
-    plot(data_ssogmm.ts,xhat(i,:),'.','MarkerSize',10)
+    plot(data_ssogmm.ts,xhat(i,:),'.','MarkerSize',13)
     h_axes = gca;
-h_axes.XAxis.FontSize = 18;
-h_axes.YAxis.FontSize = 18;
+h_axes.XAxis.FontSize = 25;
+h_axes.YAxis.FontSize = 25;
+
+if i == 1
+ylim([110 190]);
+elseif i == 2
+ylim([-1*10^-3 7*10^-3]);
+elseif i == 3
+ylim([3000 9000]);
+elseif i == 4
+ylim([3000 6500]);
+elseif i == 5
+ylim([450 1000]);
+end
 
 end
 
@@ -237,7 +249,7 @@ for i = 1:5
     figure(i)
     if i == 1
         hold on
-        plot(G,'LineWidth',3)
+        plot(G,'LineWidth',4)
         legend({'SSOGMM','EKF','UVA/Padova'},'FontSize',15,'FontWeight','bold')
     else
         legend({'SSOGMM','EKF'},'FontSize',15,'FontWeight','bold')
@@ -261,3 +273,34 @@ for i = 1:5
 end
 
 
+close all
+figure
+a1 = bar(xlabel,obs,1);
+legend({'4日間','4日目のみ'},'FontSize',15,'FontWeight','bold')
+h_axes = gca;
+h_axes.XAxis.FontSize = 20;
+h_axes.YAxis.FontSize = 20;
+
+
+figure
+a2 = bar(xlabel,ekf,1);
+legend({'4日間','4日目のみ'},'FontSize',15,'FontWeight','bold')
+h_axes = gca;
+h_axes.XAxis.FontSize = 20;
+h_axes.YAxis.FontSize = 20;
+yticks(0:0.5:2)
+
+figure
+b1 = bar(xlabel,day,1);
+legend({'Observer','EKF'},'FontSize',15,'FontWeight','bold')
+h_axes = gca;
+h_axes.XAxis.FontSize = 20;
+h_axes.YAxis.FontSize = 20;
+
+figure
+b2 = bar(xlabel,day4,1);
+legend({'Observer','EKF'},'FontSize',15,'FontWeight','bold')
+h_axes = gca;
+h_axes.XAxis.FontSize = 20;
+h_axes.YAxis.FontSize = 20;
+yticks(0:0.5:2)
